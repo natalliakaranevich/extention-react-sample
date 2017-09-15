@@ -1,3 +1,4 @@
+/* global window, process */
 import { createStore, } from 'redux';
 import createHistory from 'history/createBrowserHistory';
 import reducer from './reducers/index';
