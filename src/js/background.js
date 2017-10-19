@@ -1,12 +1,12 @@
-import Popup from './popup';
-debugger
+const chromeStorage = chrome.storage.local;
+
 chrome.runtime.onMessage.addListener(function(request) {
-  console.log('here');
   switch (request.name) {
     case 'login_submit':
       const { data } = request;
-      debugger
-      Popup.savePasswordSuggestion(data);
+      chromeStorage.set({'lastPass': data});
+      // chrome.runtime.sendMessage({'name': 'offer_password_save', 'data': data});
       break;
   }
 });
+

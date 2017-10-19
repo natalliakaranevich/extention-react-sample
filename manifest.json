@@ -5,26 +5,29 @@
   "description": "no description for now",
   "omnibox": { "keyword" : "password" },
   "icons": {
-    "16": "src/img/logo.png"
+    "16": "src/img/logo.png",
+    "48": "src/img/logo.png",
+    "128": "src/img/logo.png"
   },
   "permissions": [
     "activeTab",
-    "background"
+    "background",
+    "storage"
   ],
   "browser_action": {
     "default_title": "PasswordsSave",
     "default_icon": "src/img/logo.png",
-    "default_popup": "public/index.html"
+    "default_popup": "build/popup.html"
   },
   "background": {
-    "scripts": ["dist/js/background.js"],
+    "page": "build/background.html",
     "persistent": false
   },
   "content_scripts": [
     {
       "matches": ["*://www.facebook.com/*"],
-      "js": ["dist/js/vendor/jquery-3.2.1.min.js", "dist/js/content_sripts/formSubmited.js"],
-      "run_at": "document_end"
+      "js": ["build/contentScript.bundle.js"]
     }
-  ]
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
