@@ -5,7 +5,6 @@ chrome.runtime.onMessage.addListener(function(request) {
     case 'login_submit':
       const { data } = request;
       chromeStorage.set({'lastPass': data});
-      // chrome.runtime.sendMessage({'name': 'offer_password_save', 'data': data});
       break;
   }
 });
