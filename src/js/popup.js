@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import '../scss/styles.scss';
+
 import React from 'react';
 
 class PopUpClass {

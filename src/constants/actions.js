@@ -1,0 +1,1 @@
+export const OFFER_SAVE = 'offer-save';
