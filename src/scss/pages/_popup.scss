@@ -3,3 +3,58 @@
   height: auto;
   padding: 20px;
 }
+
+.sub-popup {
+  position: fixed;
+  top: 50px;
+  right: 30px;
+  z-index: 10000000;
+  background: #fff;
+  padding: 20px;
+
+  &.-hide {
+    transform: translateX(400px);
+    transition: transform 0.5s ease-out;
+  }
+
+  .close {
+    position: absolute;
+    right: -15px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+
+    &:after, &:before {
+      content: '';
+      width: 2px;
+      height: 20px;
+      background: #fff;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+
+
+  .dot {
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    background: #000;
+    line-height: 16px;
+    margin: 0 2px;
+    border-radius: 3px;
+    position: relative;
+    top: -1px;
+  }
+}

@@ -1,7 +1,8 @@
 /* global window, process */
-import { createStore, } from 'redux';
+import { createStore} from 'redux';
 import createHistory from 'history/createBrowserHistory';
 import reducer from './reducers/index';
+import devToolsEnhancer from 'remote-redux-devtools'
 
 export const history = createHistory();
 
@@ -20,4 +21,4 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
-export default store
+export default store;

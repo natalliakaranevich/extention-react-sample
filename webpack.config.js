@@ -20,8 +20,8 @@ if (fileSystem.existsSync(secretsPath)) {
 var options = {
   entry: {
     popup: path.join(__dirname, "src", "", "popup.js"),
-    background: path.join(__dirname, "src", "js", "background.js"),
-    contentScript: path.join(__dirname, "src", "js", "contentScript.js"),
+    background: path.join(__dirname, "src", "", "background.js"),
+    contentScript: path.join(__dirname, "src", "", "contentScript.js"),
   },
   output: {
     path: path.join(__dirname, "build"),

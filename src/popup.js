@@ -1,22 +1,26 @@
-/* global document */
+import $ from 'jquery';
+
 import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
-import store, { history } from './store';
-import App from './app.jsx';
 
-import './scss/styles.scss';
+class PopUpClass {
+  constructor() {
+    this.popup = $(document.querySelector('#popupWin'));
 
-const target = document.querySelector('#root');
+    chrome.runtime.onMessage.addListener(request => {
+      const {data, name} = request;
+      switch (name) {
+        case 'save_password':
+          Popup.savePasswordSuggestion(data);
+          break;
+      }
+    });
+  }
 
-render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div>
-        <App />
-      </div>
-    </ConnectedRouter>
-  </Provider>,
-  target
-);
+  savePasswordSuggestion(data) {
+    this.popup.append(``)
+  }
+}
+
+console.log('opened')
+
+const Popup = new PopUpClass();

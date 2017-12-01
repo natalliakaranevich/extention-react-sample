@@ -1,11 +1,14 @@
 # Chrome Extension React
 
 Run `npm run start`
+
 Load your extension on Chrome following:
+
     1. Access `chrome://extensions/`
     2. Check `Developer mode`
     3. Click on `Load unpacked extension`
     4. Select the `build` folder.
+    
 Have fun.
 
 ## Content Scripts
