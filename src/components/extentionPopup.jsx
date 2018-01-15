@@ -5,7 +5,11 @@ export default class ExtensionPopup extends Component {
     const {data} = this.props;
     debugger
     return <div className="popup-content">
-      popup
+      {
+        data.map((item, index) => {
+          return <div key={index}>{item.firstName}</div>
+        })
+      }
     </div>
   }
 }

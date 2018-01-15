@@ -5,8 +5,9 @@ import OfferSavePassword from "./components/offerSavePassword.jsx";
 import ExtensionPopup from "./components/extentionPopup.jsx";
 import ReactDOM from 'react-dom';
 import {setChromeStorageData, clearSrotage} from "./helpers";
-import {SAVEPOPUP} from "./constants/chromeStorageKeys";
+import {SAVEPOPUP, PASSWORDS} from "./constants/chromeStorageKeys";
 import {SHOWMAINPOPUP, SAVEPASSWORD, LOGINSUBMIT} from "./constants/messages";
+import {getChromeStorageData} from "./helpers";
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const {savePasswordProvider, state} = this.props;
+    const {savePasswordProvider} = this.props;
+
     chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       switch (request.name) {
         case SAVEPASSWORD:
@@ -31,15 +33,21 @@ class App extends Component {
     });
 
     chrome.browserAction.onClicked.addListener(() => {
+      const {creads} = this.props;
       const a = document.createElement('div');
       a.className = 'extension-popup';
-      ReactDOM.render(<ExtensionPopup data={state.creads} />, a);
+
+      ReactDOM.render(<ExtensionPopup data={creads} />, a);
       chrome.runtime.sendMessage({name: SHOWMAINPOPUP, data: a.outerHTML});
-    })
+    });
+
+    getChromeStorageData(null).then((data) => {
+      savePasswordProvider.savePassword({data: data[PASSWORDS]});
+    });
   }
 
   render() {
-    console.log(this.props.state);
+    console.log(this.props);
     return <div>
       Hello React World!
     </div>
@@ -47,11 +55,9 @@ class App extends Component {
 }
 
 export default connect(
-  state => {
-    return ({
-      state: state
-    })
-  },
+  state => ({
+    creads: state.savePassword.creads
+  }),
   dispatch => ({
     savePasswordProvider: new SavePasswordProvider(dispatch)
   })

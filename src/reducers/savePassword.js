@@ -3,25 +3,19 @@ import {
   SAVE_PASSWORD
 } from '../constants/actions';
 
-import {getChromeStorageData} from "./../helpers";
+const initialState = {
+  creads: []
+};
 
-export default getChromeStorageData(null).then((data) => {
-debugger
-  const initialState = {
-    saved: false,
-    inStorage: false
-  };
+export default function savePassword(state = initialState, action) {
+  switch (action.type) {
+    case OFFER_SAVE:
+      return {...state};
 
-   return function savePassword(state = initialState, action) {
-    switch (action.type) {
-      case OFFER_SAVE:
-        return {...state};
+    case SAVE_PASSWORD:
+      return {...state, creads: action.data};
 
-      case SAVE_PASSWORD:
-        return {...state, saved: true, creads: action.data};
-
-      default:
-        return state || null;
-    }
+    default:
+      return state || null;
   }
-});
+}
