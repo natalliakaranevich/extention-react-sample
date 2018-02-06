@@ -1,5 +1,12 @@
 {
   "manifest_version": 2,
   "version": "0.0.1",
-  "name": "Password extension"
+  "name": "Password extension",
+  "icons": {
+    "128": "img/chrome-256.png"
+  },
+  "browser_action": {
+    "default_popup": "src/popup.html",
+    "default_icon": "img/chrome-256.png"
+  }
 }
