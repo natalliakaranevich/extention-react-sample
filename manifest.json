@@ -1,32 +1,5 @@
 {
   "manifest_version": 2,
   "version": "0.0.1",
-  "name": "My test credentials extension",
-  "description": "no description for now",
-  "omnibox": { "keyword" : "password" },
-  "icons": {
-    "16": "src/img/logo.png",
-    "48": "src/img/logo.png",
-    "128": "src/img/logo.png"
-  },
-  "permissions": [
-    "activeTab",
-    "background",
-    "storage"
-  ],
-  "browser_action": {
-    "default_title": "PasswordsSave",
-    "default_icon": "src/img/logo.png"
-  },
-  "background": {
-    "page": "build/background.html",
-    "persistent": false
-  },
-  "content_scripts": [
-    {
-      "matches": ["*://www.facebook.com/*"],
-      "js": ["build/contentScript.bundle.js"]
-    }
-  ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "name": "Password extension"
 }
