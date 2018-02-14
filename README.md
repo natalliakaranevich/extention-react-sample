@@ -55,3 +55,7 @@ Now, the content of `build` folder will be the extension ready to be submitted t
 
 ## With React.js
 :bulb: If you want use [React.js](https://facebook.github.io/react/) with this boilerplate, check the **[react branch](https://github.com/samuelsimoes/chrome-extension-webpack-boilerplate/tree/react)**.
+
+## ESLINT
+
+Check if eslint enabled in your IDE to save code style  
